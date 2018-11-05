@@ -24,10 +24,6 @@ Reference: http://toolsqa.com/cucumber/install-cucumber-eclipse-plugin/
 ## Command
 To run the UI automation, open Terminal and cd to /test-payment.
 
-```
-mvn clean test -Dplatform=chrome -Dmode=Desktop -DbaseUrl=https://neat-business-qa.ap-southeast-1.elasticbeanstalk.com -DtimeoutSecond=10 -Dcucumber.tags=@desktop"
-```
-
 ### Assumptions
 * OTP for autotest login is fixed (for testing purpose)
 * Always enough fund in testing account
@@ -36,17 +32,27 @@ mvn clean test -Dplatform=chrome -Dmode=Desktop -DbaseUrl=https://neat-business-
 * The test-generated payee accounts should be cleaned up automatically (but this is out of scope for this project)
 * Only a set of sample test cases are included (a lot more field validations and payment routes are not tested in this sample project)
 
+### simply run with default options
+```
+mvn clean test -Dcucumber.tags=@desktop
+```
+
+### or run with options
+```
+mvn clean test -Dplatform=chrome -Dmode=Desktop -DbaseUrl=https://neat-business-qa.ap-southeast-1.elasticbeanstalk.com -DtimeoutSecond=10 -Dcucumber.tags=@desktop
+```
+
 ### Options
-* -Dplatform
+* -Dplatform (default: chrome)
     * headless-chrome
     * chrome
     * firefox
     * opera
-* -Dmode
+* -Dmode (default: Desktop)
     * Desktop
     * Mobile
-* -DbaseUrl
-* -DtimeoutSecond
+* -DbaseUrl (default: https://neat-business-qa.ap-southeast-1.elasticbeanstalk.com)
+* -DtimeoutSecond (default: 10)
 * -DmobileEmulation (only used when -Dmode=mobile, default: Nexus\ 5X)
     * Nexus\ 5X
     * Apple\ iPhone\ 6
